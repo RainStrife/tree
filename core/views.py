@@ -1,3 +1,4 @@
+import json
 from collections import defaultdict
 from django.shortcuts import render
 from core.models import Material, Building
@@ -40,3 +41,29 @@ def get_tree(request):
     }
 
     return render(request, 'core/tree.html', context)
+
+
+def get_graph(request):
+    graph = []
+
+    for building in Building.objects.all():
+        graph.append(
+            {'data': {'id': str(building.id)}}
+        )
+
+    for building in Building.objects.all():
+        for material in building.materials_produce.all():
+            for target_building in material.buildings_can_be_build.all():
+                graph.append(
+                    {
+                        'data': {
+                            'id': material.name,
+                            'source': str(building.id),
+                            'target': str(target_building.id)
+                        }
+                    }
+                )
+    context = {
+        'graph': json.dumps(graph),
+    }
+    return render(request, 'core/graph.html', context)

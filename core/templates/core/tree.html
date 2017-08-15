@@ -1,27 +1,44 @@
-<table>
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
 
-    {% for level, data in buildings %}
-        <tr>
-            <td>{{ level }}</td>
-            <td>
-                {% for building in data %}
-                    {{ building }}
-                {% endfor %}
-            </td>
-        </tr>
-    {% endfor %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}core/css/style.css">
 
-    {% for level, data in materials %}
-        <tr>
-            <td>{{ level }}</td>
-            <td>
-                {% for material in data %}
-                    {{ material }}
-                {% endfor %}
-            </td>
-        </tr>
+    </head>
 
-    {% endfor %}
 
-</table>
+    <body>
+        <table>
+            {% for level, data in buildings %}
+                <tr>
+                    <td>{{ level }}</td>
+                    <td>
+                        {% for building in data %}
+                            {{ building }}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            {% for level, data in materials %}
+                <tr>
+                    <td>{{ level }}</td>
+                    <td>
+                        {% for material in data %}
+                            {{ material }}
+                        {% endfor %}
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+{% block js %}
+    <script src="{{ STATIC_URL }}core/js/cytoscape.js"></script>
+{% endblock js %}
+
+    </body>
+</html>
 

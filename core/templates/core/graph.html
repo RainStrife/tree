@@ -21,57 +21,34 @@
 <body>
     <div id="cy"></div>
     <script>
-
+        var graph = JSON.parse('{{ graph|safe}}');
         var cy = cytoscape({
           container: document.getElementById('cy'),
-          elements: [
-            { data: { id: 'a' } },
-            { data: { id: 'b' } },
-            {
-              data: {
-                id: 'ab',
-                source: 'a',
-                target: 'b'
-              }
-            }],
+          elements: graph,
         style: cytoscape.stylesheet()
         .selector('node')
           .css({
-            'content': 'data(id)'
+              'content': 'data(id)',
+              'background-color': 'red',
           })
         .selector('edge')
           .css({
+            'content': 'data(name)',
             'curve-style': 'bezier',
             'target-arrow-shape': 'triangle',
+            'target-arrow-color': 'blue',
             'width': 4,
-            'line-color': '#ddd',
-            'target-arrow-color': '#ddd'
+            'line-color': 'blue',
           })
         .selector('.highlighted')
           .css({
-            'background-color': '#61bffc',
-            'line-color': '#61bffc',
-            'target-arrow-color': '#61bffc',
             'transition-property': 'background-color, line-color, target-arrow-color',
             'transition-duration': '0.5s'
           }),
         });
-        for (var i = 0; i < 10; i++) {
-            cy.add({
-                data: { id: 'node' + i }
-                }
-            );
-            var source = 'node' + i;
-            cy.add({
-                data: {
-                    id: 'edge' + i,
-                    source: source,
-                    target: (i % 2 == 0 ? 'a' : 'b')
-                }
-            });
-        }
+
         var layout = cy.layout({
-            name: 'grid'
+            name: 'breadthfirst'
         });
         layout.run();
     </script>

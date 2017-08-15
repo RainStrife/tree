@@ -48,7 +48,7 @@ def get_graph(request):
 
     for building in Building.objects.all():
         graph.append(
-            {'data': {'id': str(building.id)}}
+            {'data': {'id': building.name}}
         )
 
     for building in Building.objects.all():
@@ -57,9 +57,10 @@ def get_graph(request):
                 graph.append(
                     {
                         'data': {
-                            'id': material.name,
-                            'source': str(building.id),
-                            'target': str(target_building.id)
+                            'id': str(building.id) + str(target_building.id),
+                            'source': building.name,
+                            'target': target_building.name,
+                            'name': material.name
                         }
                     }
                 )

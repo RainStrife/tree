@@ -1,3 +1,5 @@
 from django.contrib import admin
+from core.models import Material, Building
 
-# Register your models here.
+admin.site.register(Material)
+admin.site.register(Building)

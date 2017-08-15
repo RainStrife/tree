@@ -1,0 +1,27 @@
+<table>
+
+    {% for level, data in buildings %}
+        <tr>
+            <td>{{ level }}</td>
+            <td>
+                {% for building in data %}
+                    {{ building }}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+
+    {% for level, data in materials %}
+        <tr>
+            <td>{{ level }}</td>
+            <td>
+                {% for material in data %}
+                    {{ material }}
+                {% endfor %}
+            </td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+

@@ -15,8 +15,8 @@ class Material(models.Model):
 
 class Building(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
-    material_for_build = models.ForeignKey(Material, related_name='Buildings_can_be_build')
-    materials_produce = models.ForeignKey(Material, related_name='Buildings_can_produce')
+    materials_for_build = models.ManyToManyField(Material, blank=True, related_name='buildings_can_be_build', verbose_name='Материалы для постройки')
+    materials_produce = models.ManyToManyField(Material, related_name='buildings_can_produce', verbose_name='Материалы которые производит')
 
     def __str__(self):
         return self.name

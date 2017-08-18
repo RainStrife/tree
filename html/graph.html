@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="cytoscape.js"></script>
+</head>
+
+<style>
+    #cy {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+
+<body>
+    <div id="cy"></div>
+    <script>
+        var cy = cytoscape({
+          container: document.getElementById('cy'),
+          elements: [{'data': {'color': 'red', 'id': 'Лесопилка'}}, {'data': {'color': 'red', 'id': 'Обработка дерева'}}, {'data': {'color': 'red', 'id': 'Столярная'}}, {'data': {'color': 'red', 'id': 'Рыболовство'}}, {'data': {'color': 'red', 'id': 'Мельница'}}, {'data': {'color': 'red', 'id': 'Ферма'}}, {'data': {'color': 'red', 'id': 'Скотобойня'}}, {'data': {'color': 'red', 'id': 'Ткацкий станок'}}, {'data': {'color': 'red', 'id': 'Портная'}}, {'data': {'color': 'red', 'id': 'Шахта'}}, {'data': {'color': 'red', 'id': 'Обработка метала'}}, {'data': {'color': 'red', 'id': 'Кухня'}}, {'data': {'color': 'red', 'id': 'Пивоварня'}}, {'data': {'color': 'red', 'id': 'Винодельня'}}, {'data': {'color': 'red', 'id': 'Пекарня'}}, {'data': {'color': 'red', 'id': 'Ювелирка'}}, {'data': {'source': 'Лесопилка', 'name': 'Древесина', 'target': 'Обработка дерева', 'id': 'Лесопилка_Обработка дерева'}}, {'data': {'source': 'Обработка дерева', 'name': 'Доски', 'target': 'Столярная', 'id': 'Обработка дерева_Столярная'}}, {'data': {'source': 'Обработка дерева', 'name': 'Доски', 'target': 'Рыболовство', 'id': 'Обработка дерева_Рыболовство'}}, {'data': {'source': 'Обработка дерева', 'name': 'Доски', 'target': 'Ферма', 'id': 'Обработка дерева_Ферма'}}, {'data': {'source': 'Обработка дерева', 'name': 'Доски', 'target': 'Шахта', 'id': 'Обработка дерева_Шахта'}}, {'data': {'source': 'Столярная', 'name': 'Инструменты', 'target': 'Рыболовство', 'id': 'Столярная_Рыболовство'}}, {'data': {'source': 'Столярная', 'name': 'Инструменты', 'target': 'Ферма', 'id': 'Столярная_Ферма'}}, {'data': {'source': 'Столярная', 'name': 'Инструменты', 'target': 'Шахта', 'id': 'Столярная_Шахта'}}, {'data': {'source': 'Мельница', 'name': 'Мука', 'target': 'Пекарня', 'id': 'Мельница_Пекарня'}}, {'data': {'source': 'Ферма', 'name': 'Виноград', 'target': 'Винодельня', 'id': 'Ферма_Винодельня'}}, {'data': {'source': 'Ферма', 'name': 'Хмель', 'target': 'Пивоварня', 'id': 'Ферма_Пивоварня'}}, {'data': {'source': 'Ферма', 'name': 'Пшеница', 'target': 'Мельница', 'id': 'Ферма_Мельница'}}, {'data': {'source': 'Ферма', 'name': 'Свиньи', 'target': 'Скотобойня', 'id': 'Ферма_Скотобойня'}}, {'data': {'source': 'Ферма', 'name': 'Овцы', 'target': 'Скотобойня', 'id': 'Ферма_Скотобойня'}}, {'data': {'source': 'Скотобойня', 'name': 'Мясо', 'target': 'Кухня', 'id': 'Скотобойня_Кухня'}}, {'data': {'source': 'Скотобойня', 'name': 'Шерсть', 'target': 'Ткацкий станок', 'id': 'Скотобойня_Ткацкий станок'}}, {'data': {'source': 'Ткацкий станок', 'name': 'Ткань', 'target': 'Портная', 'id': 'Ткацкий станок_Портная'}}, {'data': {'source': 'Шахта', 'name': 'Уголь', 'target': 'Обработка метала', 'id': 'Шахта_Обработка метала'}}, {'data': {'source': 'Шахта', 'name': 'Уголь', 'target': 'Кухня', 'id': 'Шахта_Кухня'}}, {'data': {'source': 'Шахта', 'name': 'Железная руда', 'target': 'Обработка метала', 'id': 'Шахта_Обработка метала'}}, {'data': {'source': 'Шахта', 'name': 'Золотая руда', 'target': 'Обработка метала', 'id': 'Шахта_Обработка метала'}}, {'data': {'source': 'Обработка метала', 'name': 'Железо', 'target': 'Ювелирка', 'id': 'Обработка метала_Ювелирка'}}, {'data': {'source': 'Обработка метала', 'name': 'Золото', 'target': 'Ювелирка', 'id': 'Обработка метала_Ювелирка'}}, {'data': {'source': 'Камень', 'name': '', 'target': 'Столярная', 'id': 'Камень_Столярная'}}, {'data': {'source': 'Камень', 'name': '', 'target': 'Ферма', 'id': 'Камень_Ферма'}}, {'data': {'source': 'Камень', 'name': '', 'target': 'Шахта', 'id': 'Камень_Шахта'}}, {'data': {'source': 'Вода', 'name': '', 'target': 'Ферма', 'id': 'Вода_Ферма'}}, {'data': {'source': 'Вода', 'name': '', 'target': 'Пивоварня', 'id': 'Вода_Пивоварня'}}, {'data': {'source': 'Вода', 'name': '', 'target': 'Винодельня', 'id': 'Вода_Винодельня'}}, {'data': {'source': 'Вода', 'name': '', 'target': 'Пекарня', 'id': 'Вода_Пекарня'}}, {'data': {'source': 'Травы', 'name': '', 'target': 'Пекарня', 'id': 'Травы_Пекарня'}}, {'data': {'color': 'grey', 'id': 'Рыба'}}, {'data': {'source': 'Рыболовство', 'name': '', 'target': 'Рыба', 'id': 'Рыба_Рыболовство'}}, {'data': {'color': 'grey', 'id': 'Хлеб'}}, {'data': {'source': 'Пекарня', 'name': '', 'target': 'Хлеб', 'id': 'Хлеб_Пекарня'}}, {'data': {'color': 'grey', 'id': 'Колбасы'}}, {'data': {'source': 'Кухня', 'name': '', 'target': 'Колбасы', 'id': 'Колбасы_Кухня'}}, {'data': {'color': 'grey', 'id': 'Одежда'}}, {'data': {'source': 'Портная', 'name': '', 'target': 'Одежда', 'id': 'Одежда_Портная'}}, {'data': {'color': 'grey', 'id': 'Ювелирные изделия'}}, {'data': {'source': 'Ювелирка', 'name': '', 'target': 'Ювелирные изделия', 'id': 'Ювелирные изделия_Ювелирка'}}, {'data': {'color': 'grey', 'id': 'Виноградный сок'}}, {'data': {'source': 'Винодельня', 'name': '', 'target': 'Виноградный сок', 'id': 'Виноградный сок_Винодельня'}}, {'data': {'color': 'grey', 'id': 'Пиво'}}, {'data': {'source': 'Пивоварня', 'name': '', 'target': 'Пиво', 'id': 'Пиво_Пивоварня'}}, {'data': {'color': 'pink', 'id': 'Проверка без связи'}}],
+        style: cytoscape.stylesheet()
+        .selector('node')
+          .css({
+              'content': 'data(id)',
+              'text-valign': 'center',
+              'background-color': 'data(color)',
+          })
+        .selector('edge')
+          .css({
+            'content': 'data(name)',
+            'text-rotation': 'autorotate',
+            'font-size': 26,
+            'curve-style': 'bezier',
+            'target-arrow-shape': 'triangle',
+            'target-arrow-color': 'blue',
+            'width': 4,
+            'line-color': 'green',
+          })
+
+        });
+
+        var layout = cy.layout({
+            name: 'breadthfirst'
+        });
+        layout.run();
+    </script>
+</body>

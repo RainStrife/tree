@@ -48,7 +48,20 @@ def get_graph(request):
 
     for building in Building.objects.all():
         graph.append(
-            {'data': {'id': building.name}}
+            {'data': {
+                'id': building.name,
+                'color': 'red'
+                      }
+             }
+        )
+
+    for material in Material.objects.filter(buildings_can_produce__isnull=True, buildings_can_be_build=True):
+        graph.append(
+            {'data': {
+                'id': material.name,
+                'color': 'yellow'
+            }
+            }
         )
 
     for building in Building.objects.all():
@@ -57,13 +70,56 @@ def get_graph(request):
                 graph.append(
                     {
                         'data': {
-                            'id': str(building.id) + str(target_building.id),
+                            'id': str(building.name) + '_' + str(target_building.name),
                             'source': building.name,
                             'target': target_building.name,
                             'name': material.name
                         }
                     }
                 )
+    for material in Material.objects.filter(buildings_can_produce__isnull=True):
+        for building in material.buildings_can_be_build.all():
+            graph.append(
+                {
+                    'data': {
+                        'id': str(material.name) + '_' + str(building.name),
+                        'source': material.name,
+                        'target': building.name,
+                        'name': ''
+                    }
+                }
+            )
+
+    for material in Material.objects.filter(buildings_can_be_build__isnull=True):
+        if material.buildings_can_produce.all():
+            graph.append(
+                {'data': {
+                    'id': material.name,
+                    'color': 'grey'
+                }
+                }
+            )
+            for building in material.buildings_can_produce.all():
+                graph.append(
+                    {
+                        'data': {
+                            'id': str(material.name) + '_' + str(building.name),
+                            'target': material.name,
+                            'source': building.name,
+                            'name': ''
+                        }
+                    }
+                )
+        else:
+            graph.append(
+                {'data': {
+                    'id': material.name,
+                    'color': 'pink'
+                }
+                }
+            )
+
+    print(graph)
     context = {
         'graph': json.dumps(graph),
     }

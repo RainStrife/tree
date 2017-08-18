@@ -29,22 +29,21 @@
         .selector('node')
           .css({
               'content': 'data(id)',
-              'background-color': 'red',
+              'text-valign': 'center',
+              'background-color': 'data(color)',
           })
         .selector('edge')
           .css({
             'content': 'data(name)',
+            'text-rotation': 'autorotate',
+            'font-size': 26,
             'curve-style': 'bezier',
             'target-arrow-shape': 'triangle',
             'target-arrow-color': 'blue',
             'width': 4,
-            'line-color': 'blue',
+            'line-color': 'green',
           })
-        .selector('.highlighted')
-          .css({
-            'transition-property': 'background-color, line-color, target-arrow-color',
-            'transition-duration': '0.5s'
-          }),
+
         });
 
         var layout = cy.layout({
